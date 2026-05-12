@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\OtpVerificationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,11 @@ Route::group(['middleware' => ['guest']], function () {
     
     Route::get('register', [RegisterController::class, 'create'])->name('auth.register.form');
     Route::post('register', [RegisterController::class, 'store'])->name('auth.register.store');
+    
+    // OTP Verification Routes
+    Route::get('verify-otp', [OtpVerificationController::class, 'create'])->name('auth.otp.verify.form');
+    Route::post('verify-otp', [OtpVerificationController::class, 'store'])->name('auth.otp.verify');
+    Route::post('resend-otp', [OtpVerificationController::class, 'resend'])->name('auth.otp.resend');
     
     Route::get('password/forgot', [ResetPasswordController::class, 'create'])->name('auth.forgotPassword.form');
     Route::post('password/forgot', [ResetPasswordController::class, 'store'])->name('auth.forgotPassword.sendLink');
