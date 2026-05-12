@@ -7,6 +7,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -38,7 +39,20 @@ class GoogleSocialiteController extends Controller
                 return redirect()->route('dashboard');
             }
 
-            return redirect()->route('auth.login.form')->with(['notify' => 'social-login-user-not-found']);
+            // Create new user if they don't exist
+            $newUser = User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'google_id' => $user->id,
+                'password' => bcrypt(Str::random(16)),
+            ]);
+            
+            // Assign developer role to new user
+            $newUser->assignRole('developer');
+            
+            Auth::login($newUser);
+
+            return redirect()->route('dashboard');
         } catch (Exception $e) {
             Log::error('Social login with google has failed', ['message' => $e->getMessage()]);
 

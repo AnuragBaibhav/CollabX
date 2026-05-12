@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('otp', 10);
             $table->integer('attempts')->default(0);
             $table->timestamp('verified_at')->nullable();
-            $table->timestamp('expires_at');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
 
             $table->index('otp');

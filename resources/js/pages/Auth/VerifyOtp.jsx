@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "@inertiajs/react";
-import GuestLayout from "@/Layouts/GuestLayout";
+import GuestLayout from "@/layouts/GuestLayout";
+import ContainerBox from "@/layouts/ContainerBox";
+import { Title, Text, PinInput, Button, Group, Anchor, Alert, Stack } from "@mantine/core";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 export default function VerifyOtp({ email }) {
-  const { data, setData, post, processing, errors, reset } = useForm({
+  const { data, setData, post, processing, errors } = useForm({
     otp: "",
   });
 
@@ -26,7 +29,7 @@ export default function VerifyOtp({ email }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     post(route("auth.otp.verify"), {
-      onFinish: () => reset("otp"),
+      preserveScroll: true,
     });
   };
 
@@ -42,116 +45,76 @@ export default function VerifyOtp({ email }) {
     });
   };
 
-  const handleOtpChange = (e) => {
-    const value = e.target.value.replace(/\D/g, "").slice(0, 6);
-    setData("otp", value);
-  };
-
   return (
-    <GuestLayout>
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Verify Your Email
-            </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              We've sent a 6-digit code to
-              <span className="font-medium text-gray-900"> {email}</span>
-            </p>
-          </div>
+    <>
+      <Title ta="center">Verify Your Email</Title>
+      <Text c="dimmed" size="sm" ta="center" mt={5}>
+        We've sent a 6-digit code to <strong>{email}</strong>
+      </Text>
 
-          {/* Success Message */}
-          {message && (
-            <div className="rounded-md bg-green-50 p-4">
-              <div className="text-sm font-medium text-green-800">{message}</div>
-            </div>
-          )}
+      <ContainerBox shadow="md" p={30} mt={30} radius="md">
+        {message && (
+          <Alert color="green" icon={<IconInfoCircle />} mb={20}>
+            {message}
+          </Alert>
+        )}
 
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+        <form onSubmit={handleSubmit}>
+          <Stack gap="md">
             <div>
-              <label htmlFor="otp" className="sr-only">
+              <Text size="sm" fw={500} mb={8}>
                 Enter OTP
-              </label>
-              <input
-                id="otp"
-                type="text"
-                inputMode="numeric"
-                placeholder="Enter 6-digit OTP"
-                maxLength="6"
+              </Text>
+              <PinInput
+                length={6}
+                type="number"
                 value={data.otp}
-                onChange={handleOtpChange}
-                className={`appearance-none rounded-md relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:z-10 sm:text-sm text-center text-2xl tracking-widest ${
-                  errors.otp
-                    ? "border-red-500 focus:ring-red-500"
-                    : "border-gray-300 focus:ring-indigo-500 focus:border-indigo-500"
-                }`}
+                onChange={(value) => setData("otp", value)}
+                error={!!errors.otp}
+                placeholder="0"
               />
-              {errors.otp && <p className="mt-1 text-sm text-red-600">{errors.otp}</p>}
+              {errors.otp && (
+                <Text size="sm" c="red" mt={4}>
+                  {errors.otp}
+                </Text>
+              )}
             </div>
 
-            <div className="flex items-center justify-between">
-              <button
-                type="submit"
-                disabled={processing}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {processing ? "Verifying..." : "Verify OTP"}
-              </button>
-            </div>
+            <Button type="submit" fullWidth disabled={processing || data.otp.length !== 6}>
+              {processing ? "Verifying..." : "Verify OTP"}
+            </Button>
 
-            {/* Resend OTP */}
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
+            <Group justify="center">
+              <Text size="sm" c="dimmed">
                 Didn't receive the code?{" "}
-                <button
-                  type="button"
-                  onClick={handleResend}
+                <Anchor
+                  component="button"
+                  size="sm"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleResend();
+                  }}
                   disabled={resendDisabled || processing}
-                  className="font-medium text-indigo-600 hover:text-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {resendDisabled ? `Resend in ${resendTimer}s` : "Resend"}
-                </button>
-              </p>
-            </div>
+                </Anchor>
+              </Text>
+            </Group>
 
-            {/* Back to Login */}
-            <div className="text-center">
-              <a
-                href={route("auth.login.form")}
-                className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-              >
+            <Group justify="center">
+              <Anchor href={route("auth.login.form")} size="sm">
                 Back to Login
-              </a>
-            </div>
-          </form>
+              </Anchor>
+            </Group>
+          </Stack>
+        </form>
 
-          {/* Info Message */}
-          <div className="rounded-md bg-blue-50 p-4">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <svg
-                  className="h-5 w-5 text-blue-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium text-blue-800">
-                  The OTP will expire in 10 minutes.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </GuestLayout>
+        <Alert icon={<IconInfoCircle />} mt="xl" color="blue">
+          The OTP will expire in 10 minutes.
+        </Alert>
+      </ContainerBox>
+    </>
   );
 }
+
+VerifyOtp.layout = (page) => <GuestLayout title="Verify OTP">{page}</GuestLayout>;
