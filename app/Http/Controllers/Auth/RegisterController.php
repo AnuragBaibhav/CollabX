@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Services\OtpService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -47,8 +48,12 @@ class RegisterController extends Controller
 
         event(new Registered($user));
 
-        auth()->login($user);
+        // Generate and send OTP for email verification
+        OtpService::generateAndSend($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // Store email in session for OTP verification
+        session(['otp_email' => $user->email]);
+
+        return redirect()->route('auth.otp.verify.form');
     }
 }
