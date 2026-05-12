@@ -1,102 +1,65 @@
-<p align="center"><img src="/resources/docs/banner.jpg"></p>
+# CollabX - Open-Source Project Management Platform
 
-# CollabX - Your Developer's Project Management Companion
+A powerful, open-source project management and collaboration platform designed for developers and teams. CollabX provides comprehensive tools for managing clients, projects, tasks, time tracking, and invoicing in one intuitive interface.
 
-Welcome to **CollabX** – a modern, free, and open-source project management platform built **by developers, for developers**. Whether you're a freelancer juggling multiple clients or a dev team managing complex projects, CollabX simplifies how you work.
+## 🌟 Key Features
 
-Built with **Laravel** (backend) and **React** (frontend), CollabX gives you everything you need to manage clients, organize projects, track time, and generate professional invoices – all in one intuitive platform.
+### Core Functionality
 
-## Why CollabX?
+-   **User Management** – Role-based access control with granular permissions
+-   **Client Management** – Organize and manage all clients with project associations
+-   **Project Management** – Full project oversight with team collaboration
+-   **Task Management** – Smart task organization with customizable workflows
+-   **Time Tracking** – Log hours and generate time reports
+-   **Invoice Management** – Create professional invoices from billable tasks
+-   **Activity Audit Trail** – Track all project changes and user actions
 
-Sure, there are tons of project management tools out there. But most are bloated, expensive, or not designed with developers in mind. CollabX is different:
+### Collaboration Features
 
-- **Built for developers** – Tailored workflows for dev teams and freelancers
-- **100% open-source** – Full transparency and customization
-- **Self-hosted** – Your data stays in your control
-- **Free** – No hidden fees or subscription locks
-- **Lightweight & Fast** – Built with modern tech stack
+-   **Real-time Notifications** – WebSocket-powered live updates
+-   **Task Comments** – Threaded comments on tasks
+-   **User Mentions** – Tag team members in descriptions and comments
+-   **Task Subscribers** – Track relevant tasks with automatic notifications
+-   **Activity Dashboard** – View project history and team activity
 
-## Features at a Glance
+### Advanced Capabilities
 
-- **User Management** – Create roles (client, manager, developer, designer) with granular permission controls
-- **Client Management** – Organize all your clients and their associated projects in one place
-- **Project Management** – Full project oversight with team member access controls
-- **Smart Task Organization** – Use task groups (Todo, In Progress, QA, Done, Deployed) to visualize workflow
-- **Rich Task Features** – Assignees, due dates, custom labels, time estimates, attachments, task subscribers, and comments
-- **Advanced Filtering** – Find exactly what you need with powerful task filters
-- **Real-time Updates** – Stay in sync with WebSocket-powered live notifications and task updates
-- **Smart Mentions** – Tag team members in task descriptions and comments
-- **My Tasks Dashboard** – Personalized task view for each team member
-- **Activity Tracking** – View project history and activity logs
-- **Invoice Management** – Generate professional invoices from billable tasks with logged hours
-- **Export Options** – Print or download invoices directly from the platform
-- **Comprehensive Dashboard** – View project progress, overdue tasks, recent assignments, and team comments at a glance
-- **Time Reports** – Track daily logged time per user and total project time
-- **Dark Mode** – Easy on the eyes during those late-night coding sessions
+-   **Advanced Filtering** – Powerful search and filtering on tasks
+-   **Custom Labels** – Organize tasks with custom labeling
+-   **Task Attachments** – Upload files directly to tasks
+-   **Dark Mode** – Built-in dark theme support
+-   **Export Options** – Print or download reports and invoices
+-   **RESTful API** – Full API endpoints for programmatic access
 
-## Screenshots
+## 🛠️ Technology Stack
 
-Take a peek at what CollabX looks like in action:
+| Component        | Technology                       |
+| ---------------- | -------------------------------- |
+| **Backend**      | Laravel 11+                      |
+| **Frontend**     | React 18+                        |
+| **UI Framework** | Mantine Components               |
+| **Bridge**       | Inertia.js                       |
+| **Database**     | MySQL 8.0+ / MariaDB 10.5+       |
+| **Real-time**    | WebSockets (Pusher/Laravel Echo) |
+| **Build Tool**   | Vite                             |
 
-<p align="center">
-<img src="/resources/docs/screenshots/Dashboard - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/Dashboard - dark.jpeg" width="45%">
-</p>
-<p align="center">
-<img src="/resources/docs/screenshots/Projects - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/Projects - dark.jpeg" width="45%">
-</p>
-<p align="center">
-<img src="/resources/docs/screenshots/Project tasks - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/Project tasks - dark.jpeg" width="45%">
-</p>
-<p align="center">
-<img src="/resources/docs/screenshots/Task - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/Task - dark.jpeg" width="45%">
-</p>
-<p align="center">
-<img src="/resources/docs/screenshots/My tasks - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/My tasks - dark.jpeg" width="45%">
-</p>
-<p align="center">
-<img src="/resources/docs/screenshots/Activity - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/Activity - dark.jpeg" width="45%">
-</p>
-<p align="center">
-<img src="/resources/docs/screenshots/Invoice - light.jpeg" width="45%">
-<img src="/resources/docs/screenshots/Invoice - dark.jpeg" width="45%">
-</p>
+## 📋 Prerequisites
 
-## Tech Stack
+Before installation, ensure you have:
 
-We built CollabX using modern, proven technologies:
+-   **PHP** 8.2 or higher
+-   **Node.js** 18 or higher
+-   **Composer** (latest version)
+-   **MySQL** 8.0+ or **MariaDB** 10.5+
+-   **Git**
 
-- **Backend:** [Laravel](https://laravel.com) – The most elegant PHP framework
-- **Frontend:** [React](https://react.dev) – Powerful and flexible JavaScript library
-- **Connector:** [Inertia.js](https://inertiajs.com) – The perfect bridge between Laravel and React
-- **UI Components:** [Mantine](https://mantine.dev) – Beautiful, accessible React components
-- **Database:** MySQL/MariaDB
-- **Real-time:** WebSockets for live updates
+## 🚀 Installation & Setup
 
-## 📦 Quick Start Guide
-
-### Prerequisites
-
-- **PHP** 8.1+ (tested with 8.4)
-- **Node.js** 16+
-- **Composer**
-- **MySQL** 5.7+ or **MariaDB** 10.3+
-
-### Installation (3 Easy Steps)
-
-**Step 1: Clone & Setup**
+### Step 1: Clone the Repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/vstruhar/collab-x.git
-cd collab-x
-
-# Copy environment file
+git clone https://github.com/AnuragBaibhav/CollabX.git
+cd CollabX
 cp .env.example .env
 
 # Generate app key
@@ -159,14 +122,231 @@ To use Pusher, sign up, then create a project and copy paste app keys to `.env` 
 
 ## Roadmap
 
-- [x] Kanban view.
-- [x] Report that will calculate expense and profit per user.
-- [ ] Add project notes section.
-- [ ] Multiple users should be able to log time on a task
-- [ ] Add history of changes to the task.
-- [ ] Change specific permission per user.
-- [ ] Make it responsive.
-- [ ] Add emojis to rich text editor.
-- [ ] Write tests.
-- [ ] Optimize frontend and backend.
-- [ ] Consider moving to TypeScript.
+-   [x] Kanban view
+-   [x] Financial reports with expense and profit calculations
+-   [ ] Project notes section
+-   [ ] Multi-user time logging on single task
+-   [ ] Complete task change history
+-   [ ] Per-user permission customization
+-   [ ] Mobile responsive design
+-   [ ] Rich text editor enhancements
+-   [ ] Comprehensive test suite
+-   [ ] Frontend and backend optimization
+-   [ ] TypeScript migration
+
+## 📁 Project Structure
+
+```
+CollabX/
+├── app/                    # Laravel application code
+│   ├── Actions/           # Business logic actions
+│   ├── Http/              # Controllers, requests, middleware
+│   ├── Models/            # Eloquent models
+│   ├── Services/          # Service layer
+│   ├── Events/            # Event classes
+│   ├── Listeners/         # Event listeners
+│   └── Notifications/     # Email notifications
+├── config/                # Configuration files
+├── database/              # Migrations, factories, seeders
+├── resources/
+│   ├── css/              # Stylesheets
+│   ├── js/               # React components
+│   └── views/            # Blade templates
+├── routes/               # API and web routes
+├── storage/              # File uploads and logs
+└── vendor/               # Composer dependencies
+```
+
+## ⚙️ Environment Configuration
+
+Key environment variables to configure:
+
+```env
+# Application
+APP_NAME=CollabX
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+# Database
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=collabx
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Mail Configuration
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=465
+MAIL_USERNAME=your_username
+MAIL_PASSWORD=your_password
+MAIL_FROM_ADDRESS=noreply@collabx.com
+
+# Broadcasting (WebSockets)
+BROADCAST_DRIVER=pusher
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+
+# OAuth (Google)
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
+
+## 🔧 Common Tasks
+
+### Start Development Server
+
+```bash
+# Terminal 1: Run Laravel development server
+php artisan serve
+
+# Terminal 2: Run Vite development server
+npm run dev
+```
+
+### Run Database Migrations
+
+```bash
+# Run all pending migrations
+php artisan migrate
+
+# Rollback last migration
+php artisan migrate:rollback
+
+# Fresh database (careful in production!)
+php artisan migrate:fresh --seed
+```
+
+### Create an Admin User
+
+```bash
+php artisan tinker
+>>> App\Models\User::create([
+    'name' => 'Admin',
+    'email' => 'admin@example.com',
+    'password' => bcrypt('password'),
+    'role_id' => 1
+]);
+```
+
+### Cache Optimization
+
+```bash
+# Cache configuration
+php artisan config:cache
+
+# Cache routes
+php artisan route:cache
+
+# Clear all caches
+php artisan cache:clear
+```
+
+## 📚 API Documentation
+
+The application provides a comprehensive RESTful API. See [API.md](API.md) for complete endpoint documentation.
+
+### API Features
+
+-   Bearer token authentication
+-   Comprehensive error handling
+-   Pagination support
+-   Advanced filtering
+-   Request validation
+
+## 🐛 Troubleshooting
+
+### Database Connection Error
+
+```bash
+# Verify database configuration in .env
+# Check MySQL is running
+# Ensure database exists: CREATE DATABASE collabx;
+```
+
+### Laravel Not Found / 404 Errors
+
+```bash
+php artisan cache:clear
+php artisan route:cache
+php artisan config:cache
+```
+
+### WebSocket Connection Issues
+
+```bash
+# Check Pusher credentials in .env
+# Verify BROADCAST_DRIVER is set correctly
+# Test Pusher connection in Laravel logs
+```
+
+### File Upload Issues
+
+```bash
+# Create storage link
+php artisan storage:link
+
+# Check permissions
+chmod -R 775 storage/
+chmod -R 775 bootstrap/cache/
+```
+
+## 📖 Documentation
+
+-   **Setup Guide**: See [SETUP.md](SETUP.md)
+-   **Contributing**: See [CONTRIBUTING.md](CONTRIBUTING.md)
+-   **API Docs**: See [API.md](API.md)
+-   **Changelog**: See [CHANGELOG.md](CHANGELOG.md)
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
+
+-   Code standards (PSR-12)
+-   Submitting pull requests
+-   Reporting issues
+-   Feature requests
+
+### Development Workflow
+
+```bash
+# Create a feature branch
+git checkout -b feature/your-feature
+
+# Make your changes and commit
+git add .
+git commit -m "Add your feature"
+
+# Push and create a pull request
+git push origin feature/your-feature
+```
+
+## 📄 License
+
+CollabX is open-source software licensed under the MIT License. See [LICENSE.md](LICENSE.md) for details.
+
+## 👥 Support
+
+-   **Report Issues**: [GitHub Issues](https://github.com/AnuragBaibhav/CollabX/issues)
+-   **Discussions**: [GitHub Discussions](https://github.com/AnuragBaibhav/CollabX/discussions)
+-   **Email**: support@collabx.dev
+
+## 🙏 Acknowledgments
+
+CollabX is built with modern open-source technologies:
+
+-   [Laravel](https://laravel.com)
+-   [React](https://react.dev)
+-   [Inertia.js](https://inertiajs.com)
+-   [Mantine](https://mantine.dev)
+-   And many other wonderful open-source projects
+
+---
+
+**Made with ❤️ by developers, for developers**
