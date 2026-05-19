@@ -1,18 +1,18 @@
 .container {
-    background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-6));
+    background-color: light-dark(var(--mantine-color-gray-1), #1a1a2e);
     border-radius: var(--mantine-radius-md);
-    border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-5));
+    border: rem(1px) solid light-dark(var(--mantine-color-gray-3), #1a1a2e);
     padding: rem(8px) rem(5px);
 
     @mixin dark {
         @mixin hover {
-            border: rem(1px) solid var(--mantine-color-dark-4);
+            border: rem(1px) solid #1a1a2e;
         }
     }
 }
 
 .timer {
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+    background-color: light-dark(var(--mantine-color-white), #0a0a0a);
     border-radius: var(--mantine-radius-xl);
     padding: rem(8px);
 

@@ -1,27 +1,31 @@
 .user {
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
-    border-radius: var(--mantine-radius-xl);
-    border: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));
-    transition: 0.3s ease border, 0.3s ease color;
+    background-color: light-dark(var(--mantine-color-white), #0a0a0a);
+    border-radius: var(--mantine-radius-md);
+    border: rem(1px) solid light-dark(var(--mantine-color-gray-2), #1a1a2e);
+    transition:
+        0.3s ease border,
+        0.3s ease color;
 
     @mixin hover {
         color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-white));
-        border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+        border: rem(1px) solid light-dark(var(--mantine-color-gray-3), #1a1a2e);
     }
 
-    &>span {
+    & > span {
         cursor: pointer;
     }
 }
 
 .task {
-    transition: 0.3s ease color, 0.3s ease background-color;
+    transition:
+        0.3s ease color,
+        0.3s ease background-color;
     padding: 5px 10px 5px 15px;
     border-radius: var(--mantine-radius-md);
 
     @mixin hover {
         color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-white));
-        background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-gray-9));
+        background-color: light-dark(var(--mantine-color-gray-1), #1a1a2e);
     }
 }
 

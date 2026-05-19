@@ -11,6 +11,8 @@ import {
   IconReportAnalytics,
   IconSettings,
   IconUsers,
+  IconBuildingStore,
+  IconReceipt,
 } from "@tabler/icons-react";
 import { useEffect } from "react";
 import NavbarLinksGroup from "./NavbarLinksGroup";
@@ -59,6 +61,13 @@ export default function Sidebar() {
         ],
       },
       {
+        label: "Clients",
+        icon: IconBuildingStore,
+        link: route("clients.companies.index"),
+        active: route().current("clients.*"),
+        visible: can("view client companies"),
+      },
+      {
         label: "Users",
         icon: IconUsers,
         link: route("users.index"),
@@ -66,11 +75,29 @@ export default function Sidebar() {
         visible: can("view users"),
       },
       {
+        label: "Invoices",
+        icon: IconReceipt,
+        link: route("invoices.index"),
+        active: route().current("invoices.*"),
+        visible: can("view invoices"),
+      },
+      {
+        label: "Reports",
+        icon: IconReportAnalytics,
+        link: route("reports.logged-time.sum"),
+        active: route().current("reports.*"),
+        visible: true,
+      },
+      {
         label: "Settings",
         icon: IconSettings,
         active: route().current("settings.*"),
         opened: route().current("settings.*"),
-        visible: can("view owner company") || can("view roles") || can("view labels") || can("view task priority"),
+        visible:
+          can("view owner company") ||
+          can("view roles") ||
+          can("view labels") ||
+          can("view task priority"),
         links: [
           {
             label: "Company",

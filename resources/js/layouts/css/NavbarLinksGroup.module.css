@@ -8,7 +8,7 @@
     border-radius: var(--mantine-radius-sm);
 
     @mixin hover {
-        background-color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-dark-6));
+        background-color: light-dark(var(--mantine-color-blue-7), #1a1a2e);
         color: light-dark(var(--mantine-color-white), var(--mantine-color-white));
 
         & .linkIcon {
@@ -17,14 +17,19 @@
     }
 
     &.active {
-
         &,
         &:hover {
-            background-color: light-dark(var(--mantine-color-blue-9), var(--mantine-color-blue-light));
+            background-color: light-dark(
+                var(--mantine-color-blue-9),
+                var(--mantine-color-blue-light)
+            );
             color: light-dark(var(--mantine-color-white), var(--mantine-color-blue-light-color));
 
             & .linkIcon {
-                color: light-dark(var(--mantine-color-white), var(--mantine-color-blue-light-color));
+                color: light-dark(
+                    var(--mantine-color-white),
+                    var(--mantine-color-blue-light-color)
+                );
             }
         }
     }
@@ -40,20 +45,19 @@
     margin-left: var(--mantine-spacing-xl);
     font-size: var(--mantine-font-size-sm);
     color: light-dark(var(--mantine-color-blue-2), var(--mantine-color-dark-0));
-    border-left: 1px solid light-dark(var(--mantine-color-blue-4), var(--mantine-color-dark-4));
+    border-left: 1px solid light-dark(var(--mantine-color-blue-4), #1a1a2e);
     border-top-right-radius: var(--mantine-radius-sm);
     border-bottom-right-radius: var(--mantine-radius-sm);
 
     @mixin hover {
-        background-color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-dark-6));
+        background-color: light-dark(var(--mantine-color-blue-7), #1a1a2e);
         color: light-dark(var(--mantine-color-white), var(--mantine-color-white));
     }
 
     &.active {
-
         &,
         &:hover {
-            background-color: light-dark(var(--mantine-color-blue-7), var(--mantine-color-dark-6));
+            background-color: light-dark(var(--mantine-color-blue-7), #1a1a2e);
             color: light-dark(var(--mantine-color-white), var(--mantine-color-white));
         }
     }

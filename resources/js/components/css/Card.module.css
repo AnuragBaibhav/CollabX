@@ -3,6 +3,6 @@
     background-color: light-dark(var(--mantine-color-white), #0a0a0a) !important;
 
     @mixin hover {
-        border: 1px solid light-dark(var(--mantine-color-gray-4), var(--mantine-color-gray-7));
+        border: 1px solid light-dark(var(--mantine-color-gray-4), #1a1a2e);
     }
 }
