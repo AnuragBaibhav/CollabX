@@ -113,4 +113,15 @@ class User extends Authenticatable implements AuditableContract, CanResetPasswor
             ->map(fn ($i) => ['value' => (string) $i->id, 'label' => $i->name])
             ->toArray();
     }
+
+    /**
+     * Send a password reset notification to the user.
+     *
+     * @param string $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new \App\Notifications\ResetPassword($token));
+    }
 }

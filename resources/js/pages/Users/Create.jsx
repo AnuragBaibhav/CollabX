@@ -17,13 +17,16 @@ import {
   MultiSelect,
   NumberInput,
   PasswordInput,
+  Radio,
   Text,
   TextInput,
   Title,
 } from "@mantine/core";
+import { useState } from "react";
 
 const UserCreate = () => {
   const { getDropdownValues } = useRoles();
+  const [userType, setUserType] = useState("employee");
 
   const [form, submit, updateValue] = useForm("post", route("users.store"), {
     avatar: null,
@@ -36,6 +39,15 @@ const UserCreate = () => {
     password_confirmation: "",
     roles: [],
   });
+
+  const handleUserTypeChange = (value) => {
+    setUserType(value);
+    if (value === "admin") {
+      updateValue("roles", ["admin"]);
+    } else {
+      updateValue("roles", []);
+    }
+  };
 
   return (
     <>
@@ -104,16 +116,38 @@ const UserCreate = () => {
             error={form.errors.job_title}
           />
 
-          <MultiSelect
-            label="Roles"
-            placeholder="Select role"
-            required
+          <Radio.Group
+            label="User Type"
+            description="Choose whether this user is an admin or employee"
+            value={userType}
+            onChange={handleUserTypeChange}
             mt="md"
-            value={form.data.roles}
-            onChange={(values) => updateValue("roles", values)}
-            data={getDropdownValues({ except: ["client"] })}
-            error={form.errors.roles}
-          />
+            withAsterisk
+          >
+            <Group mt="xs">
+              <Radio value="employee" label="Employee" />
+              <Radio value="admin" label="Administrator" />
+            </Group>
+          </Radio.Group>
+
+          {userType === "employee" && (
+            <MultiSelect
+              label="Roles"
+              placeholder="Select role"
+              required
+              mt="md"
+              value={form.data.roles}
+              onChange={(values) => updateValue("roles", values)}
+              data={getDropdownValues({ except: ["client", "admin"] })}
+              error={form.errors.roles}
+            />
+          )}
+
+          {userType === "admin" && (
+            <Text c="blue" mt="md" size="sm">
+              ✓ Administrator will have access to all system features and permissions
+            </Text>
+          )}
 
           <Group grow mt="md">
             <TextInput
