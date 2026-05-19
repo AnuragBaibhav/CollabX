@@ -1,22 +1,24 @@
 .task {
-    transition: 0.3s ease color, 0.3s ease background-color;
+    transition:
+        0.3s ease color,
+        0.3s ease background-color;
     padding: rem(12px) rem(12px) rem(8px) rem(12px);
     margin-bottom: rem(8px);
     position: relative;
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+    background-color: light-dark(var(--mantine-color-white), #0a0a0a);
     border-radius: var(--mantine-radius-md);
-    border: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));
+    border: rem(1px) solid light-dark(var(--mantine-color-gray-2), #1a1a2e);
 
     @mixin hover {
         color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-white));
-        background-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-6));
+        background-color: light-dark(var(--mantine-color-gray-2), #1a1a2e);
 
         .actions {
             opacity: 0.5;
         }
 
         .user {
-            border: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+            border: rem(1px) solid light-dark(var(--mantine-color-gray-3), #2a2a3e);
         }
 
         .priorityIndicator {
