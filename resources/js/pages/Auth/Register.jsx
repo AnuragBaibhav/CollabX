@@ -1,6 +1,5 @@
 import GoogleIcon from "@/icons/GoogleIcon";
-import ContainerBox from "@/layouts/ContainerBox";
-import GuestLayout from "@/layouts/GuestLayout";
+import AuthLayout from "@/layouts/AuthLayout";
 import { router } from "@inertiajs/react";
 import {
   Anchor,
@@ -8,6 +7,7 @@ import {
   Divider,
   Group,
   PasswordInput,
+  Stack,
   Text,
   TextInput,
   Title,
@@ -31,88 +31,145 @@ const Register = () => {
   };
 
   return (
-    <>
-      <Title ta="center">Create your account</Title>
-      <Text c="dimmed" size="sm" ta="center" mt={5}>
-        Join CollabX and start managing your projects
-      </Text>
+    <AuthLayout
+      title="Register"
+      welcomeTitle="Join CollabX"
+      welcomeDescription="Start collaborating with your team today. Manage projects efficiently and keep everyone on the same page."
+    >
+      <Stack gap="md">
+        <Title order={2} size="h2" ta="center" fw={700}>
+          Create Account
+        </Title>
 
-      <form onSubmit={submit}>
-        <ContainerBox shadow="md" p={30} mt={30} radius="md">
-          <Group grow mb="md" mt="md">
+        <form onSubmit={submit}>
+          <Stack gap="md">
             <Button
               leftSection={<GoogleIcon />}
               variant="default"
-              radius="xl"
+              fullWidth
+              radius="lg"
               component="a"
               href={route("auth.login.social.google")}
               loading={socialLoginPending}
               onClick={() => setSocialLoginPending(true)}
             >
-              Google
+              Continue with Google
             </Button>
-          </Group>
 
-          <Divider label="Or create with email" labelPosition="center" my="lg" />
+            <Divider label="Or continue with email" labelPosition="center" />
 
-          <TextInput
-            label="Full Name"
-            placeholder="Your full name"
-            required
-            value={form.data.name}
-            onChange={(e) => form.setData("name", e.target.value)}
-            onBlur={() => form.validate("name")}
-            error={form.errors.name}
-          />
+            <TextInput
+              label="Full Name"
+              placeholder="Enter your full name"
+              required
+              value={form.data.name}
+              onChange={(e) => form.setData("name", e.target.value)}
+              onBlur={() => form.validate("name")}
+              error={form.errors.name}
+              radius="lg"
+              styles={{
+                label: { color: "white", fontWeight: 600, marginBottom: 8 },
+                input: {
+                  backgroundColor: "#1a1a2e",
+                  borderColor: "rgba(102, 126, 234, 0.3)",
+                  color: "white",
+                  fontSize: 14,
+                  padding: "12px 16px",
+                },
+              }}
+            />
 
-          <TextInput
-            label="Email"
-            placeholder="Your email"
-            required
-            mt="md"
-            value={form.data.email}
-            onChange={(e) => form.setData("email", e.target.value)}
-            onBlur={() => form.validate("email")}
-            error={form.errors.email}
-          />
+            <TextInput
+              label="Email"
+              placeholder="Enter your email address"
+              required
+              value={form.data.email}
+              onChange={(e) => form.setData("email", e.target.value)}
+              onBlur={() => form.validate("email")}
+              error={form.errors.email}
+              radius="lg"
+              styles={{
+                label: { color: "white", fontWeight: 600, marginBottom: 8 },
+                input: {
+                  backgroundColor: "#1a1a2e",
+                  borderColor: "rgba(102, 126, 234, 0.3)",
+                  color: "white",
+                  fontSize: 14,
+                  padding: "12px 16px",
+                },
+              }}
+            />
 
-          <PasswordInput
-            label="Password"
-            placeholder="Create a password"
-            required
-            mt="md"
-            value={form.data.password}
-            onChange={(e) => form.setData("password", e.target.value)}
-            onBlur={() => form.validate("password")}
-            error={form.errors.password}
-          />
+            <PasswordInput
+              label="Password"
+              placeholder="Enter password"
+              required
+              value={form.data.password}
+              onChange={(e) => form.setData("password", e.target.value)}
+              onBlur={() => form.validate("password")}
+              error={form.errors.password}
+              radius="lg"
+              styles={{
+                label: { color: "white", fontWeight: 600, marginBottom: 8 },
+                input: {
+                  backgroundColor: "#1a1a2e",
+                  borderColor: "rgba(102, 126, 234, 0.3)",
+                  color: "white",
+                  fontSize: 14,
+                  padding: "12px 16px",
+                },
+              }}
+            />
 
-          <PasswordInput
-            label="Confirm Password"
-            placeholder="Confirm your password"
-            required
-            mt="md"
-            value={form.data.password_confirmation}
-            onChange={(e) => form.setData("password_confirmation", e.target.value)}
-            error={form.errors.password_confirmation}
-          />
+            <PasswordInput
+              label="Confirm Password"
+              placeholder="Confirm password"
+              required
+              value={form.data.password_confirmation}
+              onChange={(e) => form.setData("password_confirmation", e.target.value)}
+              error={form.errors.password_confirmation}
+              radius="lg"
+              styles={{
+                label: { color: "white", fontWeight: 600, marginBottom: 8 },
+                input: {
+                  backgroundColor: "#1a1a2e",
+                  borderColor: "rgba(102, 126, 234, 0.3)",
+                  color: "white",
+                  fontSize: 14,
+                  padding: "12px 16px",
+                },
+              }}
+            />
 
-          <Button type="submit" fullWidth mt="xl" disabled={form.processing}>
-            Create Account
-          </Button>
+            <Button
+              type="submit"
+              fullWidth
+              mt="lg"
+              disabled={form.processing}
+              radius="lg"
+              size="md"
+            >
+              Create Account
+            </Button>
 
-          <Text size="sm" ta="center" mt="md">
-            Already have an account?{" "}
-            <Anchor type="button" size="sm" onClick={() => router.get(route("auth.login.form"))}>
-              Sign in here
-            </Anchor>
-          </Text>
-        </ContainerBox>
-      </form>
-    </>
+            <Text size="sm" ta="center" c="dimmed">
+              Already have an account?{" "}
+              <Anchor
+                type="button"
+                size="sm"
+                onClick={() => router.get(route("auth.login.form"))}
+                fw={600}
+              >
+                Sign in here
+              </Anchor>
+            </Text>
+          </Stack>
+        </form>
+      </Stack>
+    </AuthLayout>
   );
 };
 
-Register.layout = (page) => <GuestLayout title="Register">{page}</GuestLayout>;
+Register.layout = (page) => page;
 
 export default Register;
