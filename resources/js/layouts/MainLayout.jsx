@@ -7,6 +7,7 @@ import Notifications from "@/layouts/Notifications";
 import { Head, usePage } from "@inertiajs/react";
 import { AppShell } from "@mantine/core";
 import { useEffect } from "react";
+import classes from "@/layouts/css/MainLayout.module.css";
 
 export default function MainLayout({ children, title }) {
   window.can = useAuthorization().can;
@@ -21,21 +22,27 @@ export default function MainLayout({ children, title }) {
   }, []);
 
   return (
-    <AppShell
-      navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: false } }}
-      padding="4rem"
-    >
-      <Head title={title} />
+    <div className={classes.wrapper}>
+      <AppShell
+        navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: false } }}
+        padding="4rem"
+        styles={{
+          root: { background: "transparent" },
+          main: { background: "transparent" },
+        }}
+      >
+        <Head title={title} />
 
-      <FlashNotification />
+        <FlashNotification />
 
-      <Notifications />
+        <Notifications />
 
-      <AppShell.Navbar>
-        <NavBarNested></NavBarNested>
-      </AppShell.Navbar>
+        <AppShell.Navbar className={classes.navbar}>
+          <NavBarNested></NavBarNested>
+        </AppShell.Navbar>
 
-      <AppShell.Main>{children}</AppShell.Main>
-    </AppShell>
+        <AppShell.Main>{children}</AppShell.Main>
+      </AppShell>
+    </div>
   );
 }
