@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
                 ProjectSeeder::class,
                 TaskGroupSeeder::class,
                 TasksSeeder::class,
+                InvoiceSeeder::class,
             ]);
         } else {
             $this->call([ProductionSeeder::class]);
