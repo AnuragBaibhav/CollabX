@@ -53,6 +53,27 @@ class ProductionSeeder extends Seeder
             }
         }
 
+        // Check if second admin credentials are provided
+        $admin2Email = config('auth.admin2.email');
+        $admin2Name = config('auth.admin2.name');
+        $admin2Password = config('auth.admin2.password');
+
+        if (!empty($admin2Email) && !empty($admin2Password)) {
+            // Create second admin user if credentials are provided
+            $admin2 = User::create([
+                'email' => $admin2Email,
+                'name' => $admin2Name ?: 'Administrator',
+                'phone' => '',
+                'rate' => 0,
+                'job_title' => 'Owner',
+                'avatar' => null,
+                'password' => bcrypt($admin2Password),
+                'remember_token' => null,
+            ]);
+            
+            $admin2->assignRole(Role::firstWhere('name', 'admin'));
+        }
+
         OwnerCompany::firstOrCreate(
             ['id' => 1],
             [

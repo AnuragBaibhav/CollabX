@@ -19,6 +19,12 @@ return [
         'password' => env('ADMIN_PASSWORD', ''),
     ],
 
+    'admin2' => [
+        'name' => env('ADMIN2_NAME', ''),
+        'email' => env('ADMIN2_EMAIL', ''),
+        'password' => env('ADMIN2_PASSWORD', ''),
+    ],
+
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
