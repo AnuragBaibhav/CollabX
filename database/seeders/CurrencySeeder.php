@@ -13,7 +13,7 @@ class CurrencySeeder extends Seeder
     public function run(): void
     {
         DB::table('currencies')->insert([
-            ['code' => 'AFN', 'name' => 'Afghani', 'symbol' => '؋', 'decimals' => 2],
+            ['code' => 'AFN', 'name' => 'Afghani', 'symbol' => '$', 'decimals' => 2],
             ['code' => 'ALL', 'name' => 'Lek', 'symbol' => 'Lek', 'decimals' => 2],
             ['code' => 'ANG', 'name' => 'Netherlands Antillian Guilder', 'symbol' => 'ƒ', 'decimals' => 2],
             ['code' => 'ARS', 'name' => 'Argentine Peso', 'symbol' => '$', 'decimals' => 2],
